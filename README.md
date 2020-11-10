@@ -1,5 +1,4 @@
-A Critique of the *Bounded Fuzzy Possibilistic Method* — Supplementary Files
-============================================================================
+# A Critique of the *Bounded Fuzzy Possibilistic Method* — Supplementary Files
 
 The ``Bounded Fuzzy Possibilistic Method'' (BFPM)
 was recently introduced in doi:10.1016/j.fss.2019.07.011.
@@ -19,8 +18,7 @@ it is an arbitrary (faulty) modification of the FCM.
 
 
 
-References
-----------
+## References
 
 H. Yazdani, Bounded fuzzy possibilistic method,
 *Fuzzy Sets and Systems* **389** (2020) 51-65. doi:10.1016/j.fss.2019.07.011
