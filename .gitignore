@@ -1,0 +1,6 @@
+*.kate-swp
+.vscode
+__pycache__
+.ipynb_checkpoints
+*.*tmp*
+cache-*
