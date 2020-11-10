@@ -169,7 +169,7 @@ def partition(X, c, m=2.0, V_init=None, eps=1e-8, eps2=1e-12,
                     return V # the end
 
         it += 1
-        if it == maxiter:
+        if it > maxiter:
             if verbose:
                 print("--- failed to converge in %d iterations"%maxiter)
             return V # the end

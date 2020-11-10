@@ -25,6 +25,16 @@ The algorithm converges to a solution representing one trivial cluster
 (all cluster centres coincide and are equal to the centroid of the whole
 data set).
 
+[unbalance.ipynb](unbalance.ipynb) provides a simple illustration
+that a solution identified by the FCM does not necessarily correspond
+to the global minium of the underlying objective function.
+Even multiple restarts from different random initial guesses may not
+be enough, although they can improve the solution significantly.
+This is a well known behaviour that we also observe in the case
+of the classic k-means method (compare, e.g., the `nstart`
+argument to the `kmeans()` function in R or the
+`n_init` argument in Python's `sklearn.cluster.KMeans`).
+
 
 
 ## References
@@ -37,5 +47,5 @@ J. Bezdek, R. Ehrlich, W. Full, FCM: The fuzzy c-means clustering algorithm,
 *Computers & Geosciences* **10** (1984) 191–203.
 [doi:10.1016/0098-3004(84)90020-7](https://dx.doi.org/10.1016/0098-3004\(84\)90020-7)
 
-M. Gagolewski, A Critique of the Bounded Fuzzy Possibilistic Method,
+M. Gagolewski, A critique of the Bounded Fuzzy Possibilistic Method,
 under review.
