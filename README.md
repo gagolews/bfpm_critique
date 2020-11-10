@@ -19,6 +19,11 @@ it is an arbitrary (faulty) modification of the FCM.
 [iris.ipynb](iris.ipynb) runs the BFPM on the famous *Iris* data set.
 The algorithm does not converge.
 
+[yeast.ipynb](yeast.ipynb) studies the behaviour of the BFPM on the *Yeast*
+data set from the UCI Machine Learning repository.
+The algorithm converges to a solution representing one trivial cluster
+(all cluster centres coincide and are equal to the centroid of the whole
+data set).
 
 
 
