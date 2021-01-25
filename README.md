@@ -1,7 +1,7 @@
 # A Critique of the *Bounded Fuzzy Possibilistic Method* — Supplementary Files
 
 The *Bounded Fuzzy Possibilistic Method* (BFPM)
-was recently introduced in
+was introduced in
 [doi:10.1016/j.fss.2019.07.011](https://dx.doi.org/10.1016/j.fss.2019.07.011).
 I demonstrate that there are some critical
 flaws in the proposed algorithm, which makes the results presented therein
@@ -12,7 +12,7 @@ classical benchmark data sets.
 
 
 [bfpm.py](bfpm.py) implements both the BFPM as well as the (now-classic)
-Fuzzy c-means method (FCM).
+Fuzzy (weighted) c-means method (FCM).
 The implementation of the BFPM is straightforward, because
 it is an arbitrary (faulty) modification of the FCM.
 
