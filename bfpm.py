@@ -1,6 +1,6 @@
 # ############################################################################ #
 #                                                                              #
-#   Copyleft (C) 2020, Marek Gagolewski <https://www.gagolewski.com>           #
+#   Copyleft (C) 2020-2021, Marek Gagolewski <https://www.gagolewski.com>      #
 #                                                                              #
 #                                                                              #
 #   This program is free software: you can redistribute it and/or modify       #
@@ -18,10 +18,8 @@
 
 
 import numpy as np
-import scipy.spatial.distance, scipy.linalg
-import pandas as pd
-
-
+import scipy.spatial.distance
+import scipy.linalg
 
 
 def partition(X, c, m=2.0, V_init=None, eps=1e-8, eps2=1e-12,
@@ -108,14 +106,14 @@ def partition(X, c, m=2.0, V_init=None, eps=1e-8, eps2=1e-12,
         V = np.empty((c, d))
         for i in range(c):
             # weighted componentwise arithmetic means:
-            V[i,:]  = np.sum(((U[i,:]**m).reshape(-1,1))*X, axis=0)
-            V[i,:] /= np.sum(U[i,:]**m)
+            V[i, :]  = np.sum(((U[i, :]**m).reshape(-1, 1)) * X, axis=0)
+            V[i, :] /= np.sum(U[i, :]**m)
         return V
 
-    if V_init is None: # the default -- random guess
+    if V_init is None:  # the default -- random guess
         # start with a random "fuzzy" partition:
         U = np.random.rand(c, n)
-        U = U/np.sum(U, axis=0).reshape(1,-1)
+        U = U/np.sum(U, axis=0).reshape(1, -1)
         V = get_V(X, U, m)
     else:
         # U will be determined in the first iteration below:
@@ -134,45 +132,45 @@ def partition(X, c, m=2.0, V_init=None, eps=1e-8, eps2=1e-12,
         D = scipy.spatial.distance.cdist(V, X)
 
         for j in range(n):
-            which_zero = (D[:,j] < eps2)
+            which_zero = (D[:, j] < eps2)
             if np.any(which_zero):
                 # EXTRA: avoid division by 0
-                U[:,j] = which_zero*np.sum(which_zero)
+                U[:, j] = which_zero * np.sum(which_zero)
             else:
                 for i in range(c):
-                    U[i,j] = np.sum((D[i,j]/D[:,j])**(2.0/(m-1.0)))
+                    U[i, j] = np.sum((D[i, j]/D[:, j])**(2.0/(m-1.0)))
 
         if use_FCM:
-            U = U**(-1.0)  # Fuzzy c-means
+            U = U**(-1.0)   # Fuzzy c-means
         else:
-            U = U**(1.0/m) # Yazdani's BFPM
+            U = U**(1.0/m)  # Yazdani's BFPM
 
         # The following is not true for BFPM:
         if use_FCM:
-            assert np.all(U>-eps2) and np.all(U<1+eps2)
-            assert np.all(np.abs(np.sum(U, axis=0)-1.0)<eps2)
+            assert np.all(U > -eps2) and np.all(U < 1+eps2)
+            assert np.all(np.abs(np.sum(U, axis=0)-1.0) < eps2)
 
         V = get_V(X, U, m)
 
         for h in range(V_prev_history_size):
             if np.max(np.sum((V_prev_history[h]-V)**2.0, axis=1)) <= eps:
                 if h == 0:
-                    return V # the end (normal convergence)
+                    return V  # the end (normal convergence)
                 else:
                     if verbose:
                         print("--- cycle in V updates!")
                         for g in range(h, -1, -1):
-                            print("--- V in iteration %d:"% (it-g-1))
+                            print("--- V in iteration %d:" % (it-g-1))
                             print(np.round(V_prev_history[g], 4))
-                        print("--- V in iteration %d (current):"%it)
+                        print("--- V in iteration %d (current):" % it)
                         print(np.round(V, 4))
-                    return V # the end
+                    return V  # the end
 
         it += 1
         if it > maxiter:
             if verbose:
-                print("--- failed to converge in %d iterations"%maxiter)
-            return V # the end
+                print("--- failed to converge in %d iterations" % maxiter)
+            return V  # the end
 
         # add current V to history, forget the oldest V:
         V_prev_history = [V]+V_prev_history[:-1]
