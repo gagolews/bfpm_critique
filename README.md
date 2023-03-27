@@ -47,5 +47,5 @@ J. Bezdek, R. Ehrlich, W. Full, FCM: The fuzzy c-means clustering algorithm,
 *Computers & Geosciences* **10** (1984) 191–203.
 [doi:10.1016/0098-3004(84)90020-7](https://dx.doi.org/10.1016/0098-3004\(84\)90020-7)
 
-M. Gagolewski, A critique of the Bounded Fuzzy Possibilistic Method, *Fuzzy Sets and Systems* (2021), in press.
+M. Gagolewski, A critique of the Bounded Fuzzy Possibilistic Method, *Fuzzy Sets and Systems* **426** (2022) 176-181.
 [doi:10.1016/j.fss.2021.07.001](https://dx.doi.org/10.1016/j.fss.2021.07.001)
